@@ -1,0 +1,154 @@
+{
+  "questions": {
+    "1":  "why_did_collection_fail",
+    "2":  "count_collection_attempts",
+    "3":  "collection_scheduling_status",
+    "4":  "shipment_customs_status",
+    "5":  "why_shipment_held_in_customs",
+    "6":  "where_was_shipment_delivered",
+    "7":  "why_did_delivery_fail",
+    "8":  "was_delivery_refused",
+    "9":  "count_delivery_attempts",
+    "10": "delivery_reschedule_outcome",
+    "11": "disposition_status",
+    "12": "why_delivery_on_hold",
+    "13": "why_shipment_delayed_in_transit",
+    "14": "why_shipment_on_hold_in_transit",
+    "15": "is_delivery_rescheduled",
+    "16": "returned_package_outcome",
+    "17": "being_returned_status",
+    "18": "being_returned_outcome"
+  },
+  "answers": {
+    "1": {
+      "1": "Collection succeeded",
+      "2": "Collection cancelled",
+      "3": "Collection never attempted",
+      "4": "Parcel not ready",
+      "5": "Shipper not available",
+      "6": "Damaged",
+      "7": "Unable to gain access",
+      "8": "Address issue",
+      "9": "Over size or weight limits",
+      "10": "Collection failed without further information or not adequate information was provided"
+    },
+    "2": "count (string integer starting at 0, e.g. \"0\", \"1\", \"2\", ...)",
+    "3": {
+      "1": "No collection attempted yet - Collection scheduled / booked for first attempt",
+      "2": "Not rescheduled / Rebooked or Reschedule / Rebooking required",
+      "3": "Rescheduled / Rebooked - lacks date information",
+      "4": "Rescheduled / Rebooked for a specific date",
+      "5": "Not applicable"
+    },
+    "4": {
+      "1": "Processed for clearance",
+      "2": "Customs clearance in progress",
+      "3": "Released by customs - clearance complete",
+      "4": "Customs clearance cancelled",
+      "5": "Customs clearance failed",
+      "6": "Customs clearance error",
+      "7": "Customs clearance delay",
+      "8": "Not applicable - shipment not in customs"
+    },
+    "5": {
+      "1": "Awaiting customs release",
+      "2": "Clearance instructions needed",
+      "3": "Awaiting tax payment by receiver",
+      "4": "Inspection required",
+      "5": "Refused in customs",
+      "6": "Invoice dispute",
+      "7": "By customs or other government agency",
+      "8": "Additional processing required for formal entry",
+      "9": "Shipment value exceeds limit",
+      "10": "Commodity value exceeds limit",
+      "11": "Additional information required",
+      "12": "Missing or incomplete documentation",
+      "13": "Not applicable - shipment not held in customs or not in customs"
+    },
+    "6": {
+      "1": "To collection point",
+      "2": "To safe place",
+      "3": "To outbuilding",
+      "4": "To neighbour",
+      "5": "To authorised recipient",
+      "6": "To greenhouse",
+      "7": "To postbox",
+      "8": "No further information provided",
+      "9": "Not applicable - not delivered yet"
+    },
+    "7": {
+      "1": "Unable to gain access",
+      "2": "No adult signature available",
+      "3": "Unable to collect tax payment",
+      "4": "Receiver not available",
+      "5": "No further information provided",
+      "6": "Not applicable - delivery did not fail or shipment has not reached the delivery status yet"
+    },
+    "8": {
+      "Yes": "Yes",
+      "No": "No"
+    },
+    "9": "count (string integer starting at 0, e.g. \"0\", \"1\", ...)",
+    "10": {
+      "1": "Delivery rescheduled",
+      "2": "Delivery rescheduled - updated address",
+      "3": "Delivery rescheduled - for Saturday",
+      "4": "Not applicable - the delivery is not rescheduled or the shipment had not reached the delivery status yet"
+    },
+    "11": {
+      "1": "Discarded",
+      "2": "Abandoned",
+      "3": "Lost",
+      "4": "Not applicable - the shipment is not discarded nor abandoned nor lost"
+    },
+    "12": {
+      "1": "Incorrect company or receiver name",
+      "2": "Address issue",
+      "3": "Awaiting sender/ receiver instructions",
+      "4": "Package too large",
+      "5": "Other reason or the reason is not known",
+      "6": "Not applicable - the delivery is not on hold or the shipment has not reached this status yet"
+    },
+    "13": {
+      "1": "Flight cancelled or delayed",
+      "2": "Due to adverse weather",
+      "3": "Due to circumstances beyond the carrier’s control",
+      "4": "Due to carrier error",
+      "5": "Other reason or the reason is not known",
+      "6": "Not applicable - the shipment is not delayed in transit"
+    },
+    "14": {
+      "1": "Valid receiver's contact information required",
+      "2": "Package damaged",
+      "3": "Refusal to pay tax",
+      "4": "Awaiting instructions",
+      "5": "Package exceeds maximum weight/ dimensions",
+      "6": "Other reason or the reason is not known",
+      "7": "Not applicable - the shipment is not on hold in transit"
+    },
+    "15": {
+      "Yes": "Yes",
+      "No": "No"
+    },
+    "16": {
+      "1": "Address issue",
+      "2": "Refused as damaged",
+      "3": "Other reason or the reason is not known",
+      "4": "Not applicable - package was not returned or none of the above is true"
+    },
+    "17": {
+      "1": "Package or merchandise damaged or missing",
+      "2": "Over size or weight limits",
+      "3": "Address issue",
+      "4": "Other reason or the reason is not known",
+      "5": "Not applicable - package is not being returned or none of the above is true"
+    },
+    "18": {
+      "1": "Package or merchandise damaged or missing",
+      "2": "Over size or weight limits",
+      "3": "Address issue",
+      "4": "Other reason or the reason is not known",
+      "5": "Not applicable - package is not being returned or none of the above is true"
+    }
+  }
+}

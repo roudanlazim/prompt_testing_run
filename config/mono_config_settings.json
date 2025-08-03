@@ -1,0 +1,11 @@
+{
+  "input_csv": "C:/Users/Shaalan/tracking_openai/data/test/stratified_by_length_labeled_seed44_20250801_125527.csv",
+  "prompt_txt": "C:/Users/Shaalan/tracking_openai/prompts/status_elements_konstant.txt",
+  "status_elements_json": "C:/Users/Shaalan/tracking_openai/config/mono_config/status_mappings.json",
+  "prompt_archive_dir": "C:/Users/Shaalan/tracking_openai/prompts/",
+  "output_results_dir": "C:/Users/Shaalan/tracking_openai/data/results/",
+  "token_log_dir": "C:/Users/Shaalan/tracking_openai/logs/",
+  "row_indices": null,
+  "test_limit": true,
+  "test_selection": 50
+}
