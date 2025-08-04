@@ -1,23 +1,21 @@
 {
   "questions": {
-    "1":  "why_did_collection_fail",
-    "2":  "count_collection_attempts",
-    "3":  "collection_scheduling_status",
-    "4":  "shipment_customs_status",
-    "5":  "why_shipment_held_in_customs",
-    "6":  "where_was_shipment_delivered",
-    "7":  "why_did_delivery_fail",
-    "8":  "was_delivery_refused",
-    "9":  "count_delivery_attempts",
-    "10": "delivery_reschedule_outcome",
-    "11": "disposition_status",
-    "12": "why_delivery_on_hold",
-    "13": "why_shipment_delayed_in_transit",
-    "14": "why_shipment_on_hold_in_transit",
-    "15": "is_delivery_rescheduled",
-    "16": "returned_package_outcome",
-    "17": "being_returned_status",
-    "18": "being_returned_outcome"
+    "1": "why_did_collection_fail",
+    "2": "count_collection_attempts",
+    "3": "collection_scheduling_status",
+    "4": "shipment_customs_status",
+    "5": "why_shipment_held_in_customs",
+    "6": "where_was_shipment_delivered",
+    "7": "why_did_delivery_fail",
+    "8": "count_delivery_attempts",
+    "9": "delivery_reschedule_outcome",
+    "10": "disposition_status",
+    "11": "why_delivery_on_hold",
+    "12": "why_shipment_delayed_in_transit",
+    "13": "why_shipment_on_hold_in_transit",
+    "14": "returned_package_outcome",
+    "15": "being_returned_status",
+    "16": "being_returned_outcome"
   },
   "answers": {
     "1": {
@@ -81,27 +79,24 @@
       "2": "No adult signature available",
       "3": "Unable to collect tax payment",
       "4": "Receiver not available",
-      "5": "No further information provided",
-      "6": "Not applicable - delivery did not fail or shipment has not reached the delivery status yet"
+      "5": "Delivery refused",
+      "6": "No further information provided",
+      "7": "Not applicable - delivery did not fail or shipment has not reached the delivery status yet"
     },
-    "8": {
-      "Yes": "Yes",
-      "No": "No"
-    },
-    "9": "count (string integer starting at 0, e.g. \"0\", \"1\", ...)",
-    "10": {
+    "8": "count (string integer starting at 0, e.g. \"0\", \"1\", \"2\", ...)",
+    "9": {
       "1": "Delivery rescheduled",
       "2": "Delivery rescheduled - updated address",
       "3": "Delivery rescheduled - for Saturday",
-      "4": "Not applicable - the delivery is not rescheduled or the shipment had not reached the delivery status yet"
+      "4": "Not applicable - the delivery is not rescheduled or the shipment has not reached the delivery status yet or the shipment has been delivered"
     },
-    "11": {
+    "10": {
       "1": "Discarded",
       "2": "Abandoned",
       "3": "Lost",
       "4": "Not applicable - the shipment is not discarded nor abandoned nor lost"
     },
-    "12": {
+    "11": {
       "1": "Incorrect company or receiver name",
       "2": "Address issue",
       "3": "Awaiting sender/ receiver instructions",
@@ -109,7 +104,7 @@
       "5": "Other reason or the reason is not known",
       "6": "Not applicable - the delivery is not on hold or the shipment has not reached this status yet"
     },
-    "13": {
+    "12": {
       "1": "Flight cancelled or delayed",
       "2": "Due to adverse weather",
       "3": "Due to circumstances beyond the carrier’s control",
@@ -117,7 +112,7 @@
       "5": "Other reason or the reason is not known",
       "6": "Not applicable - the shipment is not delayed in transit"
     },
-    "14": {
+    "13": {
       "1": "Valid receiver's contact information required",
       "2": "Package damaged",
       "3": "Refusal to pay tax",
@@ -126,24 +121,13 @@
       "6": "Other reason or the reason is not known",
       "7": "Not applicable - the shipment is not on hold in transit"
     },
-    "15": {
-      "Yes": "Yes",
-      "No": "No"
-    },
-    "16": {
+    "14": {
       "1": "Address issue",
       "2": "Refused as damaged",
       "3": "Other reason or the reason is not known",
       "4": "Not applicable - package was not returned or none of the above is true"
     },
-    "17": {
-      "1": "Package or merchandise damaged or missing",
-      "2": "Over size or weight limits",
-      "3": "Address issue",
-      "4": "Other reason or the reason is not known",
-      "5": "Not applicable - package is not being returned or none of the above is true"
-    },
-    "18": {
+    "15": {
       "1": "Package or merchandise damaged or missing",
       "2": "Over size or weight limits",
       "3": "Address issue",

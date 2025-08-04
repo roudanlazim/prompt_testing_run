@@ -5,7 +5,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from modules.token_counter import count_message_tokens  # Only this is needed
+from modules.token_counter import count_message_tokens, TokenUsageTracker  # UPDATED: added TokenUsageTracker
 
 # --- Color codes for console output ---
 RESET  = "\033[0m"
@@ -62,7 +62,7 @@ with open(STATUS_ELEM_JSON, encoding="utf-8") as f:
     STATUS_ELEM = json.load(f)
 QUESTIONS_MAP = STATUS_ELEM["questions"]
 ANSWERS_MAP   = STATUS_ELEM["answers"]
-EXPECTED_STATUS_KEYS = [str(i) for i in range(1, 19)]
+EXPECTED_STATUS_KEYS = [str(i) for i in range(1, 16)]  # Updated to 15 questions
 STATUS_COLS = [QUESTIONS_MAP[k] for k in EXPECTED_STATUS_KEYS]
 
 # --- Load prompt text and build system prompt with schema/format instructions ---
@@ -71,13 +71,12 @@ with open(PROMPT_TXT_FILE, encoding="utf-8") as f:
 
 SCHEMA_NOTICE = (
     "\n\nFormat instructions: "
-    "Return ONLY a valid JSON object with keys \"1\" through \"18\" as strings, "
+    "Return ONLY a valid JSON object with keys \"1\" through \"15\" as strings, "
     "each holding the answer for the corresponding question in the same order as above. "
     "Respond as follows:\n"
     "- For questions 2 and 9 (count questions), respond with a string integer (e.g., \"0\", \"1\", \"2\", ...).\n"
-    "- For questions 8 and 15 (Yes/No questions), respond ONLY with 'Yes' or 'No' (as a string, never a number).\n"
     "- For all other questions, respond ONLY with the answer number as a string (e.g., '3').\n"
-    "No extra fields, markdown, or text. Example: {\"1\": \"3\", \"2\": \"0\", ..., \"8\": \"Yes\", ..., \"15\": \"No\", ..., \"18\": \"5\"}"
+    "No extra fields, markdown, or text. Example: {\"1\": \"3\", \"2\": \"0\", ..., \"15\": \"5\"}"
 )
 FINAL_PROMPT = PROMPT_TEXT + SCHEMA_NOTICE
 
@@ -133,6 +132,9 @@ def main():
         if col not in df.columns:
             df[col] = None
     df["total_token_count"] = None
+    df["total_cost_usd"] = None  # NEW: column for per-row cost
+
+    tracker = TokenUsageTracker(model="gpt-4o")  # NEW: tracker instance for cost calc
 
     # --- Row selection logic ---
     if test_limit:
@@ -160,6 +162,7 @@ def main():
             for col in STATUS_COLS:
                 df.at[idx, col] = "No scans"
             df.at[idx, "total_token_count"] = 0
+            df.at[idx, "total_cost_usd"] = 0.0  # NEW: cost 0 for no scans
             color_log("PROMPT", idx, "No scans found, skipping row.")
             continue
 
@@ -182,6 +185,7 @@ def main():
                         col = QUESTIONS_MAP[num_key]
                         df.at[idx, col] = map_llm_answer_to_text(num_key, s_json[num_key])
                     df.at[idx, "total_token_count"] = s_p_tok + s_c_tok
+                    df.at[idx, "total_cost_usd"] = tracker.calc_cost(s_p_tok, s_c_tok)  # NEW: per-row cost
                     # Optionally: log to file for further audit
                     log_entry = {
                         "row_idx": idx,
@@ -208,6 +212,7 @@ def main():
             for col in STATUS_COLS:
                 df.at[idx, col] = "Retries failed"
             df.at[idx, "total_token_count"] = 0
+            df.at[idx, "total_cost_usd"] = 0.0  # NEW: cost 0 for failed rows
             color_log("ERROR", idx, "Retries exhausted. Marking row as 'Retries failed'.")
 
     df.to_csv(output_csv, index=False)

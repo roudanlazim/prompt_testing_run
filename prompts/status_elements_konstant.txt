@@ -12,33 +12,57 @@ Rules:
 
 4. In the absence of a “Collected” scan and when there is no “Manifested”, “Dropped off” or “Collection failed” scan, assume the answer to “Why did the collection fail?” is “Collection succeeded”.
 
-5. If there is a “Delivery attempted” scan, count this as a delivery attempt.
+5. In the absence of a “Collected” scan and when there is an “In Transit” scan, assume the answer to “Why did the collection fail?” is “Collection succeeded”.
 
-6. If there is no “Collected” scan, and there is an “In transit” scan in the shipment history, then the answer to “Why did the collection fail? Provide the most relevant number” must be “Collection succeeded”.
+6. If there is a “Delivery attempted” scan, count this as a delivery attempt.
 
-7. “Delivery refused” counts as a delivery attempt and should be counted when answering the question: “How many delivery attempts were made? Count the delivery attempts and the delivery refused attempts. Return only a number starting at 0”.
+7. If there is no “Collected” scan, and there is an “In transit” scan in the shipment history, then the answer to “Why did the collection fail? Provide the most relevant number” must be “Collection succeeded”.
 
-8. For the question “Why is the shipment held in customs?  Provide the most relevant number” return “11. On hold - additional information required” only when the scan is one of the following: “On hold - valid receiver's tax ID required for customs clearance”, “On hold - unrealistic value”, “On hold - country of origin required”, “On hold - missing shipment value”, “On hold - incorrect currency on invoice”, “On hold - HS code required”, “On hold - missing customs identification number”, “On hold - pending clarification on commodity description or valuation”.
+8. “Delivery refused” counts as a delivery attempt and should be counted when answering the question: “How many delivery attempts were made? Count the delivery attempts and the delivery refused attempts. Return only a number starting at 0”.
 
-9. For the question “Why is the shipment held in customs” return “12. Missing or incomplete documentation” only when the scan is one of the following: “On hold - power of attorney documentation missing”, “On hold - missing export license”, “On hold - paperwork required for customs clearance”, “On hold - personal effects form required”, “On hold - missing transit or bond documentation”, “On hold - missing certificate of origin”, “On hold - customs ID required”, “On hold - MSDS required”, “On hold - missing import license”, “On hold - commercial invoice required for customs clearance”.
+9. For the question “Why is the shipment held in customs?  Provide the most relevant number” return “11. On hold - additional information required” only when the scan is one of the following: “On hold - valid receiver's tax ID required for customs clearance”, “On hold - unrealistic value”, “On hold - country of origin required”, “On hold - missing shipment value”, “On hold - incorrect currency on invoice”, “On hold - HS code required”, “On hold - missing customs identification number”, “On hold - pending clarification on commodity description or valuation”.
 
-10. For the question “Why did the delivery fail? Provide the most relevant number” return “4. Receiver not available” only when the scan is one of the following: “Delivery attempted - receiver moved”, “Delivery attempted - receiver's location vacant”, “Delivery attempted - receiver out of business”.
+10. For the question “Why is the shipment held in customs” return “12. Missing or incomplete documentation” only when the scan is one of the following: “On hold - power of attorney documentation missing”, “On hold - missing export license”, “On hold - paperwork required for customs clearance”, “On hold - personal effects form required”, “On hold - missing transit or bond documentation”, “On hold - missing certificate of origin”, “On hold - customs ID required”, “On hold - MSDS required”, “On hold - missing import license”, “On hold - commercial invoice required for customs clearance”.
 
-11. For the question “Why is the delivery on hold? Provide the most relevant number” return “2. Address issue” only when the scan is one of the following: “Delivery hold - incomplete or incorrect address”, “Delivery hold - incorrect receiver zip/postal code”, “Delivery hold - address directions required”, “Delivery hold - incorrect state/county”, “Delivery hold - incorrect city or town”, “Delivery hold - incorrect suite/apartment number”, “Delivery hold - incorrect street name or number”.
+11. For the question “Why did the delivery fail? Provide the most relevant number” return “4. Receiver not available” only when the scan is one of the following: “Delivery attempted - receiver moved”, “Delivery attempted - receiver's location vacant”, “Delivery attempted - receiver out of business”.
 
-12. For the question “Why is the delivery on hold? Provide the most relevant number” return “3. Awaiting sender/ receiver instructions” only when the scan is one of the following: “Delivery hold - awaiting sender instructions”, “Delivery hold - awaiting receiver instructions”.
+12. For the question “Why is the delivery on hold? Provide the most relevant number” return “2. Address issue” only when the scan is one of the following: “Delivery hold - incomplete or incorrect address”, “Delivery hold - incorrect receiver zip/postal code”, “Delivery hold - address directions required”, “Delivery hold - incorrect state/county”, “Delivery hold - incorrect city or town”, “Delivery hold - incorrect suite/apartment number”, “Delivery hold - incorrect street name or number”.
 
-13. For the question “Why is the delivery on hold? Provide the most relevant number” return “5. Other reason or the reason is not known” either when the scan is one of the following: “Delivery hold - incorrect company or receiver name”, “Delivery hold - cannot be held any longer”, “Delivery hold - awaiting collection”, “Delivery hold - inaccessible area”, “Delivery hold - remote area”, “Delivery hold - pending delivery book-in”, “Delivery hold - business closed”, “Delivery hold - pick-up point unavailable - delivery to alternative location”, “Delivery hold - sender to pick-up within 5 business days”, “Delivery hold - receiver to pick up shipment”, “Delivery hold - after request”, “Delivery hold - package too large” or when there is no reason mentioned in the scan.
+13. For the question “Why is the delivery on hold? Provide the most relevant number” return “3. Awaiting sender/ receiver instructions” only when the scan is one of the following: “Delivery hold - awaiting sender instructions”, “Delivery hold - awaiting receiver instructions”.
 
-14. For the question “Why is the shipment delayed in transit? Provide the most relevant number” return “5. Other reason or the reason is not known” either when the scan is one of the following: “Delay - late trailer arrival”, “Delay - mechanical failure”, “Delay - late tender by sender”, “Delay - carrier misrouted shipment”, “Delay - due to local restrictions”, “Delay - due to industrial action”, “Delay - due to operational reasons”, “Delay - cleared after scheduled departure”, “Delivery delay - late arrival at destination”, “Delivery delay - transfer to post office”, “Delivery delay - missed transfer - delivery rescheduled”, “Delivery delay - traffic issue” or when there is no reason mentioned in the scan.
+14. For the question “Why is the delivery on hold? Provide the most relevant number” return “5. Other reason or the reason is not known” either when the scan is one of the following: “Delivery hold - incorrect company or receiver name”, “Delivery hold - cannot be held any longer”, “Delivery hold - awaiting collection”, “Delivery hold - inaccessible area”, “Delivery hold - remote area”, “Delivery hold - pending delivery book-in”, “Delivery hold - business closed”, “Delivery hold - pick-up point unavailable - delivery to alternative location”, “Delivery hold - sender to pick-up within 5 business days”, “Delivery hold - receiver to pick up shipment”, “Delivery hold - after request”, “Delivery hold - package too large” or when there is no reason mentioned in the scan.
 
-15. For the question “Why is the shipment on hold in transit? Provide the most relevant number” return “6. Other reason or the reason is not known” either when the scan is one of the following: “On hold - awaiting broker assignment”, “On hold - restricted items”, “On hold - not processed by brokerage”, “On hold - hazardous material”, “On hold - awaiting rest of shipment”, “On hold - due to commodity or weight - value verification required”, “Refused - hazardous goods” or when there is no reason mentioned in the scan.
+15. For the question “Why is the shipment delayed in transit? Provide the most relevant number” return “5. Other reason or the reason is not known” either when the scan is one of the following: “Delay - late trailer arrival”, “Delay - mechanical failure”, “Delay - late tender by sender”, “Delay - carrier misrouted shipment”, “Delay - due to local restrictions”, “Delay - due to industrial action”, “Delay - due to operational reasons”, “Delay - cleared after scheduled departure”, “Delivery delay - late arrival at destination”, “Delivery delay - transfer to post office”, “Delivery delay - missed transfer - delivery rescheduled”, “Delivery delay - traffic issue” or when there is no reason mentioned in the scan.
 
-16. For the question “If the package was returned, what is true of the below? Provide the most relevant number” return “3. Other reason or the reason is not known” either when the scan is one of the following: “Returned - not collected by receiver”, “Returned - partially received”, “Returned - collection required” or when there is no reason mentioned in the scan.
+16. For the question “Why is the shipment on hold in transit? Provide the most relevant number” return “6. Other reason or the reason is not known” either when the scan is one of the following: “On hold - awaiting broker assignment”, “On hold - restricted items”, “On hold - not processed by brokerage”, “On hold - hazardous material”, “On hold - awaiting rest of shipment”, “On hold - due to commodity or weight - value verification required”, “Refused - hazardous goods” or when there is no reason mentioned in the scan.
 
-17. For the question “If the package is being returned, what is true of the below? Provide the most relevant number” return “4. Other reason or the reason is not known” either when the scan is one of the following: “Being returned - sender collection required”, “Being returned - hold period expired”, “Being returned - unable to deliver”, “Being returned - missing label”, “Being returned - compliance reasons”, “Being returned - contents do not match description”, “Being returned - as requested by the receiver”, “Being returned -  not collected” or when there is no reason mentioned in the scan.
+17. For the question “If the package was returned, what is true of the below? Provide the most relevant number” return “3. Other reason or the reason is not known” either when the scan is one of the following: “Returned - not collected by receiver”, “Returned - partially received”, “Returned - collection required” or when there is no reason mentioned in the scan.
 
-18. For the question "Is the delivery rescheduled?" return ONLY "Yes" or "No". Do not return a number
+18. For the question “If the package is being returned, what is true of the below? Provide the most relevant number” return “4. Other reason or the reason is not known” either when the scan is one of the following: “Being returned - sender collection required”, “Being returned - hold period expired”, “Being returned - unable to deliver”, “Being returned - missing label”, “Being returned - compliance reasons”, “Being returned - contents do not match description”, “Being returned - as requested by the receiver”, “Being returned -  not collected” or when there is no reason mentioned in the scan.
+
+19. If the scan is "Delivered" the answer to the question "Where was the shipment delivered? Provide the most relevant number" should be "8. No further information provided". 
+
+20. If there is a “Delivered” scan after a “Delivery failed” scan, it means the shipment was delivered and the answer to the question “Why did the delivery fail? Provide the most relevant number” should be “6. Not applicable - delivery did not fail or shipment has not reached the delivery status yet”.
+
+21. If there is a “Delivery scheduled” scan after a “Delivery failed” scan and there is no “Delivered” scan, it means the delivery has been rescheduled. If there is a “Delivered” scan  after “Delivery scheduled” the answer to the question “If the delivery was rescheduled after failure, what is true of the below? Provide the most relevant number” should be “4. Not applicable - the delivery is not rescheduled or the shipment had not reached the delivery status yet or the shipment has been delivered”.
+
+22. If there is no “Collection failed” scan, the answer to the question “How many collection attempts were made, count collection failures. Return only a number starting at 0” should be 0.
+ 
+23. Ignore any UNMATCHED scans.
+
+24. If there is a “Collection cancelled” scan and not followed by “Collection failed” or “Collected” scan, then the answer to the question “Why did the collection fail? Provide the most relevant number” should be “2. Collection cancelled”.
+
+25. A “Collection cancelled” scan does not count as a collection attempt.
+
+26. For the question “If the delivery was rescheduled after failure, what is true of the below?”, you must consider only the final scan of one of these types, whichever appears last in time: “Delivery attempted” or "Delivery scheduled" or "Delivery rescheduled". Ignore all earlier delivery attempts or reschedules. If the last of these scans is a "Delivery scheduled" or "Delivery rescheduled" scan, then the answer indicates a reschedule. If the last scan is a "Delivery attempted", then the delivery was not rescheduled again after that, and the correct answer is "4. Not applicable - the delivery is not rescheduled or the shipment has been delivered". This rule overrides earlier delivery history. Even if the shipment was rescheduled in the past, only the latest of the three scan types above determines the correct answer.
+
+27. When answering the questions and if there are multiple scans that can answer a question, it is important to use the relevant scan that appears last for each category.
+
+28. Always double-check the final scan for each question category.
+
+29. Bear in mind that the answers to each question is not in chronological order of events.
+
+30. "Returned" and "Being returned" are two different things. When a "Returned" scan is present, it relates to "If the package was returned, what is true of the below? Provide the most relevant number". If the scan "Being returned" is present, it relates to "If the package is being returned, what is true of the below? Provide the most relevant number".
 
 Follow this format for the answers:
 
@@ -49,20 +73,19 @@ What is the shipment customs status? Provide the most relevant number.
 Why is the shipment held in customs?  Provide the most relevant number.
 Where was the shipment delivered? Provide the most relevant number.
 Why did the delivery fail? Provide the most relevant number. 
-Was the delivery refused? Yes or no.
 How many delivery attempts were made? Count the delivery attempts and the delivery refused attempts. Return only a number starting at 0. 
 If the delivery was rescheduled after failure, what is true of the below? Provide the most relevant number.
 Is the shipment discarded, abandoned or lost? Which of the 3 is true? Provide the most relevant number.
 Why is the delivery on hold? Provide the most relevant number.
 Why is the shipment delayed in transit? Provide the most relevant number.
 Why is the shipment on hold in transit? Provide the most relevant number.
-Is the delivery rescheduled? Yes or no.
 If the package was returned, what is true of the below? Provide the most relevant number. 
 If the package is being returned, what is true of the below? Provide the most relevant number.
 
+
 Why did the collection fail? Provide the most relevant number.
 
-1. Collection succeeded 
+1. Collection succeeded
 2. Collection cancelled
 3. Collection never attempted 
 4. Parcel not ready 
@@ -125,10 +148,9 @@ Why did the delivery fail? Provide the most relevant number.
 2. No adult signature available
 3. Unable to collect tax payment
 4. Receiver not available
-5. No further information provided
-6. Not applicable - delivery did not fail or shipment has not reached the delivery status yet
-
-Was the delivery refused? Yes or no.
+5. Delivery refused
+6. No further information provided
+7. Not applicable - delivery did not fail or shipment has not reached the delivery status yet
 
 How many delivery attempts were made? Count the delivery attempts and the delivery refused attempts. Return only a number starting at 0. 
 
@@ -136,7 +158,7 @@ If the delivery was rescheduled after failure, what is true of the below? Provid
 1. Delivery rescheduled
 2. Delivery rescheduled - updated address
 3. Delivery rescheduled - for Saturday
-4. Not applicable - the delivery is not rescheduled or the shipment had not reached the delivery status yet
+4. Not applicable - the delivery is not rescheduled or the shipment had not reached the delivery status yet or the shipment has been delivered
 
 Is the shipment discarded, abandoned or lost? Which of the 3 is true? Provide the most relevant number.
 1. Discarded
@@ -169,13 +191,11 @@ Why is the shipment on hold in transit? Provide the most relevant number.
 6. Other reason or the reason is not known
 7. Not applicable - the shipment is not on hold in transit
 
-Is the delivery rescheduled? Yes or no.
-
 If the package was returned, what is true of the below? Provide the most relevant number. 
 1. Address issue
 2. Refused as damaged
 3. Other reason or the reason is not known
-4. Not applicable - package was not returned or none of the above is true
+7. Not applicable - package was not returned or none of the above is true
 
 If the package is being returned, what is true of the below? Provide the most relevant number.
 1. Package or merchandise damaged or missing
